@@ -22,6 +22,15 @@ func mustReadKeyboard(ch chan termbox.Key) {
 	}
 }
 
+type humanActions int
+
+const (
+	actionMoveUp humanActions = iota
+	actionMoveLeft
+	actionMoveRight
+	actionMoveDown
+)
+
 func interpretHumanActions(keys chan termbox.Key, actions chan humanActions) {
 	for key := range keys {
 		switch key {
